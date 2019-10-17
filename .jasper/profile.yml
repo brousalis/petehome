@@ -1,0 +1,24 @@
+keyword: Computer
+first_name: Pete
+last_name: Brousalis
+location: 60657
+#stt_engine: sphinx
+#passive_stt_engine: sphinx
+tts_engine: google-tts
+stt_engine: witai-stt
+witai-stt:
+  access_token: O6UZTJ42RGHRQXBJP3N2DCZ5FJJJXOQO
+pocketsphinx:
+  fst_model: '/home/pi/phonetisaurus/g014b2b.fst'
+  hmm_dir: '/usr/share/pocketsphinx/model/en-us/en-us/'
+timezone: America/Chicago
+# audio_engine: pyaudio
+audio:
+ input_channels: 1
+ input_chunksize: 1024
+ output_chunksize: 1024
+ output_padding: no
+#  input_samplewidth: '32'
+#  input_samplerate: 48000
+# output_device: snd-rpi-googlevoicehat-soundcar-hw-00
+# input_device: snd-rpi-googlevoicehat-soundcar-hw-00

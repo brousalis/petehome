@@ -1,0 +1,158 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+## Version 3, Copyright (c) 2006, Carnegie Mellon University 
+## Contributors includes Wen Xu, Ananlada Chotimongkol, 
+## David Huggins-Daines, Arthur Chan and Alan Black 
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 19 words,
+  which begins "</s>", "<s>", "BIRTHDAY"...
+This is an OPEN-vocabulary model (type 1)
+  (OOVs were mapped to UNK, which is treated as any other vocabulary word)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 16 
+2-gram frequency of frequency : 31 0 0 0 0 0 0 
+3-gram frequency of frequency : 45 0 0 0 0 0 0 
+1-gram discounting ratios : 0.89 
+2-gram discounting ratios : 
+3-gram discounting ratios : 
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3 
+
+end of data mark: \end\
+
+\data\
+ngram 1=20
+ngram 2=32
+ngram 3=45
+
+\1-grams:
+-1.7044 <UNK>	0.0000
+-0.5071 </s>	-1.0280
+-0.4771 <s>	-1.3388
+-1.7044 BIRTHDAY	-0.3153
+-1.7044 EMAIL	-0.3153
+-1.7044 FACEBOOK	-0.3153
+-1.7044 HACKER	-0.3153
+-1.7044 HEADLINES	-0.3153
+-1.7044 INBOX	-0.3153
+-1.7044 JOKE	-0.3153
+-1.7044 LIFE	-0.3153
+-1.7044 MEANING	-0.4685
+-1.7044 MUSIC	-0.3153
+-1.7044 NEWS	-0.3153
+-1.7044 NO	-0.3153
+-1.7044 NOTIFICATION	-0.3153
+-1.7044 OF	-0.4685
+-1.7044 SPOTIFY	-0.3153
+-1.7044 TIME	-0.3153
+-1.7044 YES	0.0000
+
+\2-grams:
+-0.0280 </s> <s> -0.1619
+-1.1903 <s> BIRTHDAY 0.1761
+-1.1903 <s> EMAIL 0.1761
+-1.1903 <s> FACEBOOK 0.1761
+-1.1903 <s> HACKER 0.1761
+-1.1903 <s> HEADLINES 0.1761
+-1.1903 <s> INBOX 0.1761
+-1.1903 <s> JOKE 0.1761
+-1.1903 <s> MEANING 0.1761
+-1.1903 <s> MUSIC 0.1761
+-1.1903 <s> NEWS 0.1761
+-1.1903 <s> NO 0.1761
+-1.1903 <s> NOTIFICATION 0.1761
+-1.1903 <s> SPOTIFY 0.1761
+-1.1903 <s> TIME 0.1761
+-1.1903 <s> YES -0.1392
+-0.1761 BIRTHDAY </s> 0.9031
+-0.1761 EMAIL </s> 0.9031
+-0.1761 FACEBOOK </s> 0.9031
+-0.1761 HACKER </s> 0.9031
+-0.1761 HEADLINES </s> 0.9031
+-0.1761 INBOX </s> 0.9031
+-0.1761 JOKE </s> 0.9031
+-0.1761 LIFE </s> 0.9031
+-0.1761 MEANING OF 0.1761
+-0.1761 MUSIC </s> 0.9031
+-0.1761 NEWS </s> 0.9031
+-0.1761 NO </s> 0.9031
+-0.1761 NOTIFICATION </s> 0.9031
+-0.1761 OF LIFE 0.1761
+-0.1761 SPOTIFY </s> 0.9031
+-0.1761 TIME </s> 0.9031
+
+\3-grams:
+-1.1761 </s> <s> EMAIL 
+-1.1761 </s> <s> FACEBOOK 
+-1.1761 </s> <s> HACKER 
+-1.1761 </s> <s> HEADLINES 
+-1.1761 </s> <s> INBOX 
+-1.1761 </s> <s> JOKE 
+-1.1761 </s> <s> MEANING 
+-1.1761 </s> <s> MUSIC 
+-1.1761 </s> <s> NEWS 
+-1.1761 </s> <s> NO 
+-1.1761 </s> <s> NOTIFICATION 
+-1.1761 </s> <s> SPOTIFY 
+-1.1761 </s> <s> TIME 
+-1.1761 </s> <s> YES 
+-0.3010 <s> BIRTHDAY </s> 
+-0.3010 <s> EMAIL </s> 
+-0.3010 <s> FACEBOOK </s> 
+-0.3010 <s> HACKER </s> 
+-0.3010 <s> HEADLINES </s> 
+-0.3010 <s> INBOX </s> 
+-0.3010 <s> JOKE </s> 
+-0.3010 <s> MEANING OF 
+-0.3010 <s> MUSIC </s> 
+-0.3010 <s> NEWS </s> 
+-0.3010 <s> NO </s> 
+-0.3010 <s> NOTIFICATION </s> 
+-0.3010 <s> SPOTIFY </s> 
+-0.3010 <s> TIME </s> 
+-0.3010 <s> YES </s> 
+-0.3010 BIRTHDAY </s> <s> 
+-0.3010 EMAIL </s> <s> 
+-0.3010 FACEBOOK </s> <s> 
+-0.3010 HACKER </s> <s> 
+-0.3010 HEADLINES </s> <s> 
+-0.3010 INBOX </s> <s> 
+-0.3010 JOKE </s> <s> 
+-0.3010 LIFE </s> <s> 
+-0.3010 MEANING OF LIFE 
+-0.3010 MUSIC </s> <s> 
+-0.3010 NEWS </s> <s> 
+-0.3010 NO </s> <s> 
+-0.3010 NOTIFICATION </s> <s> 
+-0.3010 OF LIFE </s> 
+-0.3010 SPOTIFY </s> <s> 
+-0.3010 TIME </s> <s> 
+
+\end\
